@@ -1,5 +1,6 @@
 const max = process.argv[2];
-let FizzBuzz = {
+
+let FizzBuzzIter = {
  [Symbol.iterator]() {
   let i = 0;
   return {
@@ -21,6 +22,17 @@ let FizzBuzz = {
   }
  }
 }
+
+let FizzBuzz = function*(){
+ let i = 0;
+ while (i < max) {
+   i++;
+   let value = i % 15 === 0 ? 'FizzBuzz' :
+      i % 3 === 0 ? 'Fizz' :
+      i % 5 === 0 ? 'Buzz' : i;
+   yield value; 
+ }
+}();
 
 for (var n of FizzBuzz) {
  console.log(n);
